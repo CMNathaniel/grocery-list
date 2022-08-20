@@ -4,35 +4,44 @@ import React, { useState } from 'react';
 
 const App = () => {
 
-  const [firstName, setFirstName] = useState('');
+  const [listItem, setListItem] = useState('');
+  const [submittedItem, setSubmittedItem] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('You have submitted');
+    setSubmittedItem(listItem);
+    setListItem("");
   }
 
   return (
     <div className="App">
       <header className="App-header">
         <h1>
-          Stine's Grocery List 
+          Stine's Grocery List ☑ 
         </h1>
         <img src={groceryimage} className="App-logo" alt="logo" />
       </header>
       <main>
-        <form className='form'>
-          <div className='form-control'>
-              <label htmlFor='firstName'>Name: </label>
+        <form className="form">
+          <div className="form-control">
+              <label htmlFor="listItem">Grocery item: </label>
               <input
-                  type='text'
-                  id='firstName'
-                  name='firstName'
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
+                  type="text"
+                  id="listItem"
+                  name="listItem"
+                  placeholder="oat milk"
+                  value={listItem}
+                  onChange={(e) => setListItem(e.target.value)}
               />
           </div>
-          <button type='submit' onClick={handleSubmit}>Add item</button>
+          <button type="submit" onClick={handleSubmit}>Add to list</button>
         </form>
+        <div class="grocery-list">
+          <h3>My Grocery List</h3>
+          <ul>
+            <li>{submittedItem}</li>
+          </ul>
+        </div>
       </main>
     </div>
   );

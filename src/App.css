@@ -8,8 +8,6 @@
 }
 
 .App-header {
-  /* background-color: lightcyan; */
-  /* min-height: 100vh; */
   margin: 15px;
   max-height: 200vh;
   display: flex;
@@ -20,4 +18,36 @@
   color: orangered;
 }
 
+.form-control {
+  margin: 20px;
+}
 
+button {
+  background-color: lightyellow;
+  border-radius: 15px;
+  height: 25px;
+  margin-bottom: 15px;
+}
+
+.grocery-list {
+  border: solid;
+  width: 80%;
+  margin: auto;
+}
+
+/* definitely getting ahead of myself trying to add empty boxes and eventually a checkmark. Will circle back on this once core functionality is complete */
+
+ul {
+  list-style-type: none;
+  /* list-style-type: "\2610   ";
+  text-align: center; */
+}
+
+ul li:before {
+  /* list-style-type: "\2610   "; */
+  /* content: '🔲 '; */
+}
+
+/* ul li:before {
+  content: '✓';
+} */
