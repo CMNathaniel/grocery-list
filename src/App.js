@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 const App = () => {
 
   const [listItem, setListItem] = useState('');
-  const [submittedItem, setSubmittedItem] = useState(null);
+  // const [submittedItem, setSubmittedItem] = useState(null);
   const [allSubmittedItems, setAllSubmittedItems] = useState([]);
 
   // const listOfSubmittedItems = [
@@ -17,22 +17,23 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmittedItem(listItem);
-    console.log(allSubmittedItems);
-    allSubmittedItems.push(submittedItem);
+    setAllSubmittedItems([listItem]);
+    setListItem("");
+    // allSubmittedItems.push(listItem);
     // so right now the array only gets the new item added after 2 user clicks. But even then, the new array is not getting pushed into the DOM
-    // after each 
-    console.log(`listof items after .push() ${allSubmittedItems}`);
-    console.log(`length of listOfSubmittedItems after .push ${allSubmittedItems.length}`)
-    // setListItem("");
+    console.log(`list of allSubmittedItems after .push() = ${allSubmittedItems}`);
+    console.log(`length of allSubmitedItems after .push = ${allSubmittedItems.length}`)
   }
 
-  
+  const addListItem = (listItem) => {
+    updateListItems([...allSubmittedItems, listItem]);
+  };
+  console.log(allSubmitttedItems);
 
   // is my key as the index causing any problems? Should I change that to something else?
   const renderListOfSubmittedItems = allSubmittedItems.map((item, index) =>
     <ul>
-      <li key={index}>{item}</li>
+      <li key={listItem}>{item}</li>
     </ul>
   );
 
@@ -63,10 +64,9 @@ const App = () => {
           <h3>My Grocery List</h3>
           <p>Total Grocery List Items: {allSubmittedItems.length}</p>
           <ul>
-        
-            <li>Below is the user inputted item</li>
-            <li>{submittedItem}</li>
-            <li>Below is the currently hardcoded array of items</li>
+            <li>Below is the user inputted item: </li>
+            <li>{listItem}</li>
+            <li>Below is the array of items: </li>
             <li>{renderListOfSubmittedItems}</li>
           </ul>
         </div>
