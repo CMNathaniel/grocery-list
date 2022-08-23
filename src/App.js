@@ -1,6 +1,7 @@
 import groceryimage from './Groceries.jpeg';
 import './App.css';
 import React, { useState } from 'react';
+import GroceryItemForm from "./GroceryItemForm";
 
 const App = () => {
 
@@ -40,28 +41,7 @@ const App = () => {
         <img src={groceryimage} className="App-logo" alt="logo" />
       </header>
       <main>
-        <form className="form">
-          <div className="form-control">
-              <label htmlFor="foodItem"></label>
-              <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="grocery item"
-                  value={foodItem.name}
-                  onChange={handleChange}
-              />
-               <input
-                  type="number"
-                  id="quantity"
-                  name="quantity"
-                  placeholder="quantity"
-                  value={foodItem.quantity}
-                  onChange={handleChange}
-              />
-          </div>
-          <button type="submit" onClick={handleSubmit}>Add to list</button>
-        </form>
+        <GroceryItemForm />
         <div class="grocery-list">
           <h3>My Grocery List</h3>
           <p>Total Grocery List Items: {foodItem.length}</p>
