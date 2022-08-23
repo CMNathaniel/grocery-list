@@ -4,38 +4,32 @@ import React, { useState } from 'react';
 
 const App = () => {
 
-  const [listItem, setListItem] = useState('');
-  // const [submittedItem, setSubmittedItem] = useState(null);
-  const [allSubmittedItems, setAllSubmittedItems] = useState([]);
+  const [foodItem, setFoodItem] = useState([{
+    name: "",
+    quantity: "",
+  }]);
 
-  // const listOfSubmittedItems = [
-  //   // "carrots",
-  //   // "peas",
-  //   // "onions",
-  //   // "bread"
-  // ];
+  // const addFoodItem = (foodItem) => {
+  //   updateFoodItems([...foodItemList, foodItem])
+  // }
+  // console.log(foodItemList);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setAllSubmittedItems([listItem]);
-    setListItem("");
-    // allSubmittedItems.push(listItem);
-    // so right now the array only gets the new item added after 2 user clicks. But even then, the new array is not getting pushed into the DOM
-    console.log(`list of allSubmittedItems after .push() = ${allSubmittedItems}`);
-    console.log(`length of allSubmitedItems after .push = ${allSubmittedItems.length}`)
-  }
-
-  const addListItem = (listItem) => {
-    updateListItems([...allSubmittedItems, listItem]);
+  const handleChange = (event) => {
+    setFoodItem({...foodItem, [event.target.name]: event.target.value });
   };
-  console.log(allSubmitttedItems);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(foodItem);
+    setFoodItem({name: "", quantity: ""});
+  };
 
   // is my key as the index causing any problems? Should I change that to something else?
-  const renderListOfSubmittedItems = allSubmittedItems.map((item, index) =>
-    <ul>
-      <li key={listItem}>{item}</li>
-    </ul>
-  );
+  // const foodItemList = foodItem.map((item, index) =>
+  //   <ul>
+  //     <li key={index}>{item}</li>
+  //   </ul>
+  // );
 
   return (
     <div className="App">
@@ -48,26 +42,34 @@ const App = () => {
       <main>
         <form className="form">
           <div className="form-control">
-              <label htmlFor="listItem">Grocery item: </label>
+              <label htmlFor="foodItem"></label>
               <input
                   type="text"
-                  id="listItem"
-                  name="listItem"
-                  placeholder="oat milk"
-                  value={listItem}
-                  onChange={(e) => setListItem(e.target.value)}
+                  id="name"
+                  name="name"
+                  placeholder="grocery item"
+                  value={foodItem.name}
+                  onChange={handleChange}
+              />
+               <input
+                  type="number"
+                  id="quantity"
+                  name="quantity"
+                  placeholder="quantity"
+                  value={foodItem.quantity}
+                  onChange={handleChange}
               />
           </div>
           <button type="submit" onClick={handleSubmit}>Add to list</button>
         </form>
         <div class="grocery-list">
           <h3>My Grocery List</h3>
-          <p>Total Grocery List Items: {allSubmittedItems.length}</p>
+          <p>Total Grocery List Items: {foodItem.length}</p>
           <ul>
             <li>Below is the user inputted item: </li>
-            <li>{listItem}</li>
-            <li>Below is the array of items: </li>
-            <li>{renderListOfSubmittedItems}</li>
+            {/* <li>{foodItem}</li> */}
+            {/* <li>Below is the array of items: </li>
+            <li>{foodItemList}</li> */}
           </ul>
         </div>
       </main>
