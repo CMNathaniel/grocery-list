@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import './App.css';
  
-const GroceryItemForm = () => {
+
+const GroceryItemForm = ({addContact}) => {
 
     const [foodItem, setFoodItem] = useState([{
         name: "",
@@ -13,12 +14,13 @@ const GroceryItemForm = () => {
       };
     
     const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(foodItem);
-    setFoodItem({name: "", quantity: ""});
+        event.preventDefault();
+        console.log(foodItem);
+        addContact(foodItem);
+        console.log(foodItem);
+        setFoodItem({name: "", quantity: ""});
     };
     
-        
     return (      
         <form className="form">
             <div className="form-control">
@@ -44,5 +46,6 @@ const GroceryItemForm = () => {
         </form>
     );
 }
+
 
 export default GroceryItemForm;

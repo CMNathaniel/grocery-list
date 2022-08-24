@@ -1,36 +1,19 @@
-import groceryimage from './Groceries.jpeg';
-import './App.css';
 import React, { useState } from 'react';
 import GroceryItemForm from "./GroceryItemForm";
+import GroceryItemList from "./GroceryItemList";
+import './App.css';
+import groceryimage from './Groceries.jpeg';
+
 
 const App = () => {
+  // need to re-name things from Contact to something else but leaving until 
+  // I can at least get the functionality to work! 
+  const [contacts, updateContacts] = useState([]);
 
-  const [foodItem, setFoodItem] = useState([{
-    name: "",
-    quantity: "",
-  }]);
-
-  // const addFoodItem = (foodItem) => {
-  //   updateFoodItems([...foodItemList, foodItem])
-  // }
-  // console.log(foodItemList);
-
-  const handleChange = (event) => {
-    setFoodItem({...foodItem, [event.target.name]: event.target.value });
+  const addContact = (contact) => {
+    // I believe the ....contacts piece will store user input into an array
+    updateContacts([...contacts, contact]);
   };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(foodItem);
-    setFoodItem({name: "", quantity: ""});
-  };
-
-  // is my key as the index causing any problems? Should I change that to something else?
-  // const foodItemList = foodItem.map((item, index) =>
-  //   <ul>
-  //     <li key={index}>{item}</li>
-  //   </ul>
-  // );
 
   return (
     <div className="App">
@@ -41,20 +24,12 @@ const App = () => {
         <img src={groceryimage} className="App-logo" alt="logo" />
       </header>
       <main>
-        <GroceryItemForm />
-        <div class="grocery-list">
-          <h3>My Grocery List</h3>
-          <p>Total Grocery List Items: {foodItem.length}</p>
-          <ul>
-            <li>Below is the user inputted item: </li>
-            {/* <li>{foodItem}</li> */}
-            {/* <li>Below is the array of items: </li>
-            <li>{foodItemList}</li> */}
-          </ul>
-        </div>
+        <GroceryItemForm addContact={addContact}/>
+        <GroceryItemList contacts={contacts}/>
       </main>
     </div>
   );
 }
+
 
 export default App;
