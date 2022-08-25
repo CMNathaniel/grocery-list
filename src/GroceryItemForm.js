@@ -2,23 +2,32 @@ import React, { useState } from "react";
 import './App.css';
  
 
-const GroceryItemForm = ({addContact}) => {
+const INITIAL_STATE = {
+    name: "",
+    quantity:"",
+};
 
-    const [foodItem, setFoodItem] = useState([{
-        name: "",
-        quantity: "",
-    }]);
+const GroceryItemForm = ({ addContact }) => {
+   
+    const [foodItem, setFoodItem] = useState(INITIAL_STATE);
 
     const handleChange = (event) => {
-        setFoodItem({...foodItem, [event.target.name]: event.target.value });
-      };
+        setFoodItem({
+            ...foodItem, 
+            [event.target.id]: event.target.value,
+        });      
+    };
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(foodItem);
+        alert(foodItem.name + " " + foodItem.quantity);
+        // console.log(foodItem);
+
+        //receiving callback handler from the parent component which uses the form data
         addContact(foodItem);
-        console.log(foodItem);
-        setFoodItem({name: "", quantity: ""});
+
+        // console.log(foodItem);d
+        setFoodItem(INITIAL_STATE);
     };
     
     return (      

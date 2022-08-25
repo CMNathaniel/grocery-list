@@ -8,11 +8,21 @@ import groceryimage from './Groceries.jpeg';
 const App = () => {
   // need to re-name things from Contact to something else but leaving until 
   // I can at least get the functionality to work! 
-  const [contacts, updateContacts] = useState([]);
+  const [contacts, updateContacts] = useState([
+    {
+      name: "Bananas",
+      quantity: 5,
+    },
+    {
+      name: "Carrots",
+      quantity: 3,
+    }
+  ]);
 
   const addContact = (contact) => {
     // I believe the ....contacts piece will store user input into an array
     updateContacts([...contacts, contact]);
+    alert("The array of grocery items was updated:" + contacts);
   };
 
   return (
