@@ -20,13 +20,11 @@ const GroceryItemForm = ({ addContact }) => {
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        alert(foodItem.name + " " + foodItem.quantity);
-        // console.log(foodItem);
+        alert("handleSubmit in GroceryItemForm.js has run: " + foodItem.name + " " + foodItem.quantity);
 
         //receiving callback handler from the parent component which uses the form data
         addContact(foodItem);
 
-        // console.log(foodItem);d
         setFoodItem(INITIAL_STATE);
     };
     

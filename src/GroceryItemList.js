@@ -1,13 +1,13 @@
 import './App.css';
 
 
-const GroceryItemList = ({contacts}) => {
+const GroceryItemList = ({ contacts }) => {
 
     const renderGroceryItemList = () => {
         {contacts.map((contact) => (
-        <div className="card" key={contact}>
-            <p className="card-name">{contact}</p>
-        </div>
+        <ul>
+            <li className="card-name">{contact}</li>
+        </ul>
         ))}  
     };
 
@@ -16,6 +16,7 @@ const GroceryItemList = ({contacts}) => {
             <h3>My Grocery List</h3> 
             <p>This area represents the component called GroceryItemList!</p> 
             {renderGroceryItemList}
+            {/* {console.log(typeof(contacts))} */}
         </div> 
     );
 }
