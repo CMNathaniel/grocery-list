@@ -11,10 +11,10 @@ const App = () => {
   const [contacts, updateContacts] = useState([]);
 
   const addContact = (contact) => {
-    // I believe the ....contacts piece will store user input into an array
-    alert("addContact in App.js has run: " + contacts);
+    // I believe the ...contacts piece will store user input into an array
+    console.log("addContact in App.js has run: " , contacts);
     updateContacts([...contacts, contact]);
-    alert("updateContacts inside addContact in App.js has run: " + contacts);
+    console.log("updateContacts inside addContact in App.js has run: " , contacts);
 
   };
 
