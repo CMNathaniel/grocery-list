@@ -3,20 +3,18 @@ import './App.css';
 
 const GroceryItemList = ({ contacts }) => {
 
-    const renderGroceryItemList = () => {
-        {contacts.map((contact) => (
-        <ul>
-            <li className="card-name">{contact}</li>
-        </ul>
-        ))}  
-    };
-
     return (
-        <div class="grocery-list">
-            <h3>My Grocery List</h3> 
+        <div className="grocery-list">
             <p>This area represents the component called GroceryItemList!</p> 
-            {renderGroceryItemList}
-            {/* {console.log(typeof(contacts))} */}
+            <h3>My Grocery List</h3> 
+            <p>Total Items: {contacts.length}</p> 
+            {/* <p>Here is contacts:{contacts}</p> */}
+            {/* {contacts.map((contact) => (
+                <ul>
+                    <li className="card-name">{contact}</li>
+                </ul>
+            ))}    */}
+            
         </div> 
     );
 }

@@ -2,34 +2,42 @@ import React, { useState } from "react";
 import './App.css';
  
 
-const INITIAL_STATE = {
-    name: "",
-    quantity:"",
-};
+// const INITIAL_STATE = [
+//     {
+//         name: "",
+//         quantity:"",
+//     }
+// ];
 
-const GroceryItemForm = ({ addContact }) => {
+// const GroceryItemForm = ({ addContact }) => {
    
-    const [foodItem, setFoodItem] = useState(INITIAL_STATE);
+
+
+    // const [foodItem, setFoodItem] = useState(INITIAL_STATE);
+
+
+
+const GroceryItemForm = ({ addContact, contacts, updateContacts }) => {
 
     const handleChange = (event) => {
-        setFoodItem({
-            ...foodItem, 
+        updateContacts({
+            ...contacts, 
             [event.target.id]: event.target.value,
         });      
     };
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log("handleSubmit in GroceryItemForm.js has run: " , foodItem.name + " " , foodItem.quantity);
+        console.log("handleSubmit in GroceryItemForm.js has run: " , contacts);
 
         //receiving callback handler from the parent component which uses the form data
-        addContact(foodItem);
-
-        setFoodItem(INITIAL_STATE);
+        addContact({contacts});
+        console.log("addContact in handleSubmit in GroceryItemForm.js has run: " , contacts);
+        // setFoodItem(INITIAL_STATE);
     };
     
     return (      
-        <form className="form">
+        <form className="form" >
             <div className="form-control">
                 <label htmlFor="foodItem"></label>
                 <input
@@ -37,7 +45,7 @@ const GroceryItemForm = ({ addContact }) => {
                     id="name"
                     name="name"
                     placeholder="grocery item"
-                    value={foodItem.name}
+                    value={contacts.name}
                     onChange={handleChange}
                 />
                 <input
@@ -45,7 +53,7 @@ const GroceryItemForm = ({ addContact }) => {
                     id="quantity"
                     name="quantity"
                     placeholder="quantity"
-                    value={foodItem.quantity}
+                    value={contacts.quantity}
                     onChange={handleChange}
                 />
             </div>
