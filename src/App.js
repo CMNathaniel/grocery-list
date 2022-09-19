@@ -6,26 +6,24 @@ import groceryimage from './Groceries.jpeg';
 
 
 const App = () => {
-  // need to re-name things from Contact to something else but leaving until 
-  // I can at least get the functionality to work! 
 
-  const [contacts, updateContacts] = useState([]);
+  const [groceryItems, updateGroceryItems] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("handleSubmit in GroceryItemForm.js has run: " , contacts);
+    console.log("handleSubmit in App.js has run: " , groceryItems);
 
     //receiving callback handler from the parent component which uses the form data
-    addContact({contacts});
-    console.log("addContact in handleSubmit in GroceryItemForm.js has run: " , contacts);
+    addGroceryItem({groceryItems});
+    console.log("addGroceryItem in handleSubmit in App.js has run: " , groceryItems);
     // setFoodItem(INITIAL_STATE);
   };
 
-  const addContact = (contact) => {
-    // I believe the ...contacts piece will store user input into an array
-    console.log("addContact in App.js has run: " , contacts);
-    updateContacts([...contacts, contact]);
-    console.log("updateContacts inside addContact in App.js has run: contacts, contact" , contacts, contact);
+  const addGroceryItem = (groceryItem) => {
+    // I believe the ...groceryItems piece will store user input into an array
+    console.log("addGroceryItem in App.js has run: " , groceryItems);
+    updateGroceryItems([...groceryItems, groceryItem]);
+    console.log("updateGroceryItems inside addGroceryItem in App.js has run: groceryItems, contact" , groceryItems, groceryItem);
   };
 
 
@@ -41,12 +39,12 @@ const App = () => {
         <GroceryItemForm 
         handleSubmit={handleSubmit} 
         // handleSubmit={this.handleSubmit.bind(this)} 
-        addContact={addContact} 
-        contacts={contacts}
+        addGroceryItem={addGroceryItem} 
+        groceryItems={groceryItems}
         />
         <GroceryItemList 
-        contacts={contacts}
-        updateContact={updateContacts}
+        groceryItems={groceryItems}
+        updateGroceryItems={updateGroceryItems}
         />
       </main>
     </div>

@@ -14,8 +14,8 @@ import './App.css';
 const GroceryItemForm = props => {
 
     const handleChange = (event) => {
-        props.updateContacts({
-            ...props.contacts, 
+        props.updateGroceryItems({
+            ...props.groceryItems, 
             [event.target.id]: event.target.value,
         });      
     };
@@ -30,7 +30,7 @@ const GroceryItemForm = props => {
                     id="name"
                     name="name"
                     placeholder="grocery item"
-                    value={props.contacts.name}
+                    value={props.groceryItems.name}
                     onChange={handleChange}
                 />
                 <input
@@ -38,7 +38,7 @@ const GroceryItemForm = props => {
                     id="quantity"
                     name="quantity"
                     placeholder="quantity"
-                    value={props.contacts.quantity}
+                    value={props.groceryItems.quantity}
                     onChange={handleChange}
                 />
             </div>
