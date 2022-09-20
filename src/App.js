@@ -14,18 +14,34 @@ const INITIAL_STATE = [
 export default function App() {
   const [groceryItems, updateGroceryItems] = useState(INITIAL_STATE);
 
+  // when the user types anything in the grocery item or quantity form fields
   const handleChange = (event) => {
-    updateGroceryItems({
-      ...groceryItems, 
-      [event.target.id]: event.target.value,
-    });   
+    // updateGroceryItems({
+    //   ...groceryItems, 
+    //   [event.target.id]: event.target.value,
+    // });   
     event.preventDefault();
-    console.log(groceryItems);
+    // console.log(groceryItems);
   };
 
+  // when the user clicks the Add to List button
   const handleSubmit = (event) => {
-    alert('A grocery item and quantity were submitted: ' + this.state.value);
     event.preventDefault();
+    // updateGroceryItems({
+    //   ...groceryItems, 
+    //   [event.target.id]: event.target.value,
+    // });   
+    updateGroceryItems([
+      {
+        name: "smoothie",
+        quantity: 2,
+      },
+      {
+        name: "pickles",
+        quantity: 7,
+      },
+    ])
+    console.log(groceryItems);
   };
 
   // const addGroceryItem = (groceryItems) => {
@@ -73,15 +89,15 @@ export default function App() {
       
         {/* formerly the component GroceryItemList */}
         <div className="grocery-list">
-          {/* <p>This area represents the component called GroceryItemList!</p>  */}
-          <h3>My Grocery List</h3> 
-          <p>Total Items: {groceryItems.length}</p> 
-         {/* <p>Here is groceryItems:{groceryItems}</p>  
-           {groceryItems.map((groceryItem) => (
+          <h2>My Grocery List</h2> 
+          <h3>Total Items: {groceryItems.length}</h3>  
+          {groceryItems.map(groceryItem => (
+            <div key={groceryItem.name}>
               <ul>
-                  <li className="card-name">{groceryItem}</li>
+                <li className="grocery-item">{groceryItem.name} {groceryItem.quantity}</li>
               </ul>
-          ))}    */}
+            </div>
+          ))}    
         </div> 
       </main>
     </div>
