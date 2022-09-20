@@ -7,41 +7,49 @@ import groceryimage from './Groceries.jpeg';
 const INITIAL_STATE = [
     {
         name: "",
-        quantity:"",
+        quantity: null,
     }
 ];
 
 export default function App() {
+  // might need to change useState to useReducer
   const [groceryItems, updateGroceryItems] = useState(INITIAL_STATE);
 
   // when the user types anything in the grocery item or quantity form fields
-  const handleChange = (event) => {
-    // updateGroceryItems({
-    //   ...groceryItems, 
-    //   [event.target.id]: event.target.value,
-    // });   
+  const handleChange = (event) => {  
     event.preventDefault();
-    // console.log(groceryItems);
   };
 
   // when the user clicks the Add to List button
   const handleSubmit = (event) => {
     event.preventDefault();
-    // updateGroceryItems({
-    //   ...groceryItems, 
-    //   [event.target.id]: event.target.value,
-    // });   
-    updateGroceryItems([
-      {
-        name: "smoothie",
-        quantity: 2,
-      },
-      {
-        name: "pickles",
-        quantity: 7,
-      },
-    ])
+    updateGroceryItems({
+      ...groceryItems, 
+      [event.target.id]: event.target.value,
+    });   
+    // updateGroceryItems([
+    //   {
+    //     name: "smoothie",
+    //     quantity: 2,
+    //   },
+    //   {
+    //     name: "pickles",
+    //     quantity: 7,
+    //   },
+    // ]);
     console.log(groceryItems);
+  };
+
+  const displayGroceryItems = () => {
+    return (
+      {groceryItems.map(groceryItem => (
+        <div key={groceryItem.name}>
+          <ul>
+            <li className="grocery-item">{groceryItem.name} {groceryItem.quantity}</li>
+          </ul>
+        </div>
+      ))}
+    );   
   };
 
   // const addGroceryItem = (groceryItems) => {
@@ -91,14 +99,8 @@ export default function App() {
         <div className="grocery-list">
           <h2>My Grocery List</h2> 
           <h3>Total Items: {groceryItems.length}</h3>  
-          {groceryItems.map(groceryItem => (
-            <div key={groceryItem.name}>
-              <ul>
-                <li className="grocery-item">{groceryItem.name} {groceryItem.quantity}</li>
-              </ul>
-            </div>
-          ))}    
-        </div> 
+          {displayGroceryItems()} 
+        </div>
       </main>
     </div>
   );
