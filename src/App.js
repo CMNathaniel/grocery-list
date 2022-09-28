@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-// import GroceryItemForm from "./GroceryItemForm";
-// import GroceryItemList from "./GroceryItemList";
+import React, { useState, useSyncExternalStore } from 'react';
 import './App.css';
 import groceryimage from './Groceries.jpeg';
 
@@ -12,53 +10,32 @@ const INITIAL_STATE = [
 ];
 
 export default function App() {
-  // might need to change useState to useReducer
-  // do I need to change updateGroceryItems to setGroceryItems??
-  const [groceryItems, updateGroceryItems] = useState(INITIAL_STATE);
-
+  const [groceryItems, setGroceryItems] = useState(INITIAL_STATE);
 
   // when the user types anything in the grocery item or quantity form fields
   const handleChange = (event) => {  
     event.preventDefault();
   };
 
-  // when the user clicks the Add to List button
+  // when the user enters food name and quanitity in the form and submits via button
   const handleSubmit = (event) => {
     event.preventDefault();
-    updateGroceryItems({
-      ...groceryItems, 
-      [event.target.id]: event.target.value,
-    });   
-    // updateGroceryItems([
-    //   {
-    //     name: "smoothie",
-    //     quantity: 2,
-    //   },
-    //   {
-    //     name: "pickles",
-    //     quantity: 7,
-    //   },
-    // ]);
-    console.log(groceryItems);
-    console.log(typeof(groceryItems));
-  };
-
-  // const displayGroceryItems = () => groceryItems.map((groceryItem) => 
-  //       <div key={groceryItem.name}>
-  //         <ul>
-  //           <li className="grocery-item">{groceryItem.name} {groceryItem.quantity}</li>
-  //         </ul>
-  //       </div>
-  // );
-
-  // const addGroceryItem = (groceryItems) => {
-  //   updateGroceryItems(groceryItems);
-  // };
-
-  // const addGroceryItem = (groceryItem) => {
-  //   updateGroceryItems([groceryItem]);
-  //   // console.log("updateGroceryItems inside addGroceryItem in App.js has run: " , groceryItem);
-  // };
+    
+    const updateGroceryItems = [
+      ...groceryItems,
+      // {
+      //   id: groceryItems.length + 1,
+      //   name: "Pickles",
+      //   quantity: 4
+      // }
+      {
+        [event.target.id]: groceryItems.length + 1,
+        name: "Pickles",
+        quantity: 4
+      }
+    ];
+    setGroceryItems(updateGroceryItems);
+  }
   
   return (
     <div className="App">
@@ -97,12 +74,12 @@ export default function App() {
         {/* formerly the component GroceryItemList */}
         <div className="grocery-list">
           <h2>My Grocery List</h2> 
-          <h3>Total Items: {groceryItems.length}</h3>  
+          <h3>Total Items: {groceryItems.length-1}</h3>  
           {/* {displayGroceryItems()}  */}
 
           <ul>
             {groceryItems.map((groceryItem) => (
-              <div key={groceryItem.name}>
+              <div key={groceryItem.id}>
                   <li className="grocery-item">
                     {groceryItem.name} {groceryItem.quantity}
                   </li>
