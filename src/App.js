@@ -13,7 +13,9 @@ const INITIAL_STATE = [
 
 export default function App() {
   // might need to change useState to useReducer
+  // do I need to change updateGroceryItems to setGroceryItems??
   const [groceryItems, updateGroceryItems] = useState(INITIAL_STATE);
+
 
   // when the user types anything in the grocery item or quantity form fields
   const handleChange = (event) => {  
@@ -38,19 +40,16 @@ export default function App() {
     //   },
     // ]);
     console.log(groceryItems);
+    console.log(typeof(groceryItems));
   };
 
-  const displayGroceryItems = () => {
-    return (
-      {groceryItems.map(groceryItem => (
-        <div key={groceryItem.name}>
-          <ul>
-            <li className="grocery-item">{groceryItem.name} {groceryItem.quantity}</li>
-          </ul>
-        </div>
-      ))}
-    );   
-  };
+  // const displayGroceryItems = () => groceryItems.map((groceryItem) => 
+  //       <div key={groceryItem.name}>
+  //         <ul>
+  //           <li className="grocery-item">{groceryItem.name} {groceryItem.quantity}</li>
+  //         </ul>
+  //       </div>
+  // );
 
   // const addGroceryItem = (groceryItems) => {
   //   updateGroceryItems(groceryItems);
@@ -92,14 +91,24 @@ export default function App() {
                   onChange={handleChange}
               />
           </div>
-          <button type="submit">Add to list</button>
+          <button type="submit">Add to List</button>
         </form>
       
         {/* formerly the component GroceryItemList */}
         <div className="grocery-list">
           <h2>My Grocery List</h2> 
           <h3>Total Items: {groceryItems.length}</h3>  
-          {displayGroceryItems()} 
+          {/* {displayGroceryItems()}  */}
+
+          <ul>
+            {groceryItems.map((groceryItem) => (
+              <div key={groceryItem.name}>
+                  <li className="grocery-item">
+                    {groceryItem.name} {groceryItem.quantity}
+                  </li>
+              </div>
+            ))}
+          </ul>
         </div>
       </main>
     </div>
