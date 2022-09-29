@@ -1,4 +1,4 @@
-import React, { useState, useSyncExternalStore } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import groceryimage from './Groceries.jpeg';
 
@@ -20,22 +20,22 @@ export default function App() {
   // when the user enters food name and quanitity in the form and submits via button
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log(groceryItems);
+    console.log(typeof(groceryItems));
     
-    const updateGroceryItems = [
-      ...groceryItems,
-      // {
-      //   id: groceryItems.length + 1,
-      //   name: "Pickles",
-      //   quantity: 4
-      // }
-      {
-        [event.target.id]: groceryItems.length + 1,
-        name: "Pickles",
-        quantity: 4
-      }
-    ];
-    setGroceryItems(updateGroceryItems);
-  }
+    const updateGroceryItem = [
+        ...groceryItems,
+        {
+        [event.target.name]: event.target.value,
+        }
+      ];
+    setGroceryItems(updateGroceryItem);
+    // setGroceryItems(groceryItems => 
+    //   [...groceryItems, `${groceryItems.length}`]
+    // );
+
+    // setGroceryItems({ ...groceryItems, [event.target.name]: event.target.value });
+  };
   
   return (
     <div className="App">
