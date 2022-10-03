@@ -2,37 +2,55 @@ import React, { useState } from 'react';
 import './App.css';
 import groceryimage from './Groceries.jpeg';
 
-const INITIAL_STATE = [
-    {
-        name: "",
-        quantity: null,
-    }
-];
+// const INITIAL_STATE = [
+//     {
+//         name: "",
+//         quantity: null,
+//     }
+// ];
 
 export default function App() {
-  const [groceryItems, setGroceryItems] = useState(INITIAL_STATE);
+  const [groceryItems, setGroceryItems] = useState(
+    {
+    name: "",
+    quantity: null,
+    }
+  );
 
   // when the user types anything in the grocery item or quantity form fields
+  // feels like a function I can refactor at some point
   const handleChange = (event) => {  
     event.preventDefault();
   };
 
-  // when the user enters food name and quanitity in the form and submits via button
+  // when the user enters food name and quantity in the form and submits via button
   const handleSubmit = (event) => {
     event.preventDefault();
+    
+    // const updateGroceryItem = [
+    //     ...groceryItems, 
+    //     {
+    //       name: event.target.name,
+    //       quantity: 5
+    //     }
+    //   ];
+
+    // setGroceryItems(updateGroceryItem);
+    setGroceryItems({...groceryItems, [event.target.name]: event.target.value });
+
     console.log(groceryItems);
     console.log(typeof(groceryItems));
-    
-    const updateGroceryItem = [
-        ...groceryItems,
-        {
-        [event.target.name]: event.target.value,
-        }
-      ];
-    setGroceryItems(updateGroceryItem);
+
+
+
     // setGroceryItems(groceryItems => 
     //   [...groceryItems, `${groceryItems.length}`]
     // );
+
+    // {
+    //   [event.target.name]: event.target.value,
+    //   {groceryItems.name}: event.target.name,
+    //   }
 
     // setGroceryItems({ ...groceryItems, [event.target.name]: event.target.value });
   };
@@ -78,14 +96,16 @@ export default function App() {
           {/* {displayGroceryItems()}  */}
 
           <ul>
-            {groceryItems.map((groceryItem) => (
-              <div key={groceryItem.id}>
+            {groceryItems.name.map((groceryItem) => (
+              // not totally confident this key is in the correct element nor is it going to be unique enough 
+              <div key={groceryItem.name}>
                   <li className="grocery-item">
-                    {groceryItem.name} {groceryItem.quantity}
+                  {groceryItem.quantity} {groceryItem.name}
                   </li>
               </div>
             ))}
           </ul>
+
         </div>
       </main>
     </div>
