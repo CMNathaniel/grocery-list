@@ -1,13 +1,13 @@
-.App {
+.app {
   text-align: center;
 }
 
-.App-logo {
+.app-logo {
   height: 20vmin;
   pointer-events: none;
 }
 
-.App-header {
+.app-header {
   margin: 15px;
   max-height: 200vh;
   display: flex;
@@ -23,30 +23,13 @@
 }
 
 button {
-  background-color: lightyellow;
   border-radius: 15px;
-  height: 25px;
-  margin-bottom: 15px;
+  width: 80px;
+  margin: 15px;
+  padding: 10px;
 }
 
 .grocery-list {
   width: 80%;
   margin: auto;
 }
-
-/* definitely getting ahead of myself trying to add empty boxes and eventually a checkmark. Will circle back on this once core functionality is complete */
-
-ul {
-  list-style-type: none;
-  /* list-style-type: "\2610   ";
-  text-align: center; */
-}
-
-ul li:before {
-  /* list-style-type: "\2610   "; */
-  /* content: '🔲 '; */
-}
-
-/* ul li:before {
-  content: '✓';
-} */
