@@ -12,18 +12,18 @@ const App = () => {
   });
   
   return (
-    <div className="app">
-      <header className="app-header">
-        <h1>
-          Stine's Grocery List ☑ 
-        </h1>
-        <img src={groceryimage} className="app-logo" alt="logo" />
-      </header>
-      <main>
-        <GroceryItemForm setGroceryItems={setGroceryItems}/>
-        <GroceryItemList groceryItems={groceryItems}/>
-      </main>
-    </div>
+      <div className="app">
+        <header className="app-header">
+          <h1>
+            Stine's Grocery List ☑ 
+          </h1>
+          <img src={groceryimage} className="app-logo" alt="logo" />
+        </header>
+        <main>
+          <GroceryItemForm setGroceryItems={setGroceryItems}/>
+          <GroceryItemList groceryItems={groceryItems}/>
+        </main>
+      </div>
   );
 }
 
