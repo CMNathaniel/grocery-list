@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import './App.css';
  
 
-const GroceryItemForm = setGroceryItems => {
+const GroceryItemForm = ({setGroceryItems}) => {
   // hook for adding user inputted data from form into the groceryItems.name array. 
   // form field starts with empty string until user types something 
   const [newGroceryItem, setNewGroceryItem] = useState("");
@@ -12,7 +12,7 @@ const GroceryItemForm = setGroceryItems => {
     setNewGroceryItem(event.target.value);
   };
 
-  // callback function to user submitted data "onSubmit" from form into groceryItems.name array
+  // callback function to user submitted data "onSubmit" from form <GroceryItemForm /> into groceryItems.name array
   // prevents page refresh, then spreads any existing items in our array, plus adds the newGroceryItem
   const addGroceryItem = (event) => {
     event.preventDefault();
@@ -25,7 +25,7 @@ const GroceryItemForm = setGroceryItems => {
     // we return the form to an empty state afterwards 
     setNewGroceryItem("");
   };
-    
+ 
   return (      
     <form className="form" onSubmit={addGroceryItem} >
       <div className="form-control">

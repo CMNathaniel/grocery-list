@@ -20,8 +20,9 @@ const App = () => {
           <img src={groceryimage} className="app-logo" alt="logo" />
         </header>
         <main>
-          <GroceryItemForm setGroceryItems={setGroceryItems}/>
-          <GroceryItemList groceryItems={groceryItems}/>
+          {/* these are the two children components */}
+          <GroceryItemForm setGroceryItem={groceryItems} onChange={setGroceryItems}/>
+          <GroceryItemList groceryItems={groceryItems} onChange={setGroceryItems}/>
         </main>
       </div>
   );

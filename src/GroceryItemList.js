@@ -1,7 +1,8 @@
+import React from "react";
 import './App.css';
 
-
-const GroceryItemList = groceryItems => {
+ 
+const GroceryItemList = ({groceryItems}) => {
 
   return (
     <div className="grocery-list">
@@ -17,4 +18,4 @@ const GroceryItemList = groceryItems => {
   );
 }
 
-export default GroceryItemList; 
+export default GroceryItemList;
