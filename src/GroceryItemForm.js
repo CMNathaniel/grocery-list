@@ -1,39 +1,58 @@
 import React from "react";
 import './App.css';
 
-// might delete the below 
-// hook for adding user inputted data from form into the groceryItems.name array. 
-// form field starts with empty string until user types something
-// const [newGroceryItem, setNewGroceryItem] = useState("");
-
 
 const GroceryItemForm = ({groceryItems, setGroceryItems, updateGroceryItem}) => {
-  // callback function to user submitted data "onSubmit" from form <GroceryItemForm /> into groceryItems.name array
-  const addGroceryItem = (event) => {
+  
+  // user clicks Add button
+  // callback function (event handler??) to user submitted data "onSubmit" from form <GroceryItemForm /> into groceryItems.name array
+  const handleGroceryItem = (event) => {
     // prevents page refresh
     event.preventDefault();
-    // spreads any existing items in our array
+    
+    // form field starts with empty string until user types something
+
+    console.log({groceryItems});
+
     setGroceryItems(groceryItem => (
-    {
-    ...groceryItem,
-    // and also adds the new groceryItem submitted by the user
-    name: [...groceryItem.name, groceryItems]
-    }
+      // groceryItems.push(['Onions']),
+      // groceryItems.push(['Eggs']),
+      // groceryItems.push(['Pickles']),
+
+      // spreads any existing items in our array
+      { 
+        ...groceryItem,
+      }
     ));
+
+    console.log({groceryItems});
+
+    // groceryItems.map((item, idx))// [1,2,3]
+
+
+    // setGroceryItems(groceryItem => (
+    // {
+    // ...groceryItem,
+    // // and also adds the new groceryItem submitted by the user
+    // name: [...groceryItem.name, groceryItems]
+    // }
+    // ));
+
     // we return the form to an empty state afterwards 
     setGroceryItems("");
-    // console.log(typeof(addGroceryItem));
   };
 
+  console.log({groceryItems});
+
   return (      
-    <form className="form" onSubmit={addGroceryItem} >
+    <form className="form" onSubmit={handleGroceryItem} >
       <div className="form-control">
         <label htmlFor="foodItem"></label>
         <input
           type="text"
           id="name"
           name="grocery item"
-          placeholder="pickles"
+          placeholder="cheese"
           value={groceryItems}
           onChange={updateGroceryItem}
         />

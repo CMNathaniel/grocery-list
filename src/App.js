@@ -2,20 +2,20 @@ import React, { useState } from 'react';
 import './App.css';
 import groceryimage from './Groceries.jpeg';
 import GroceryItemForm from './GroceryItemForm.js';
-import GroceryItemList from './GroceryItemForm.js';
-
+import GroceryItemList from './GroceryItemList.js';
 
 const App = () => {
-  // hook with initial empty array state groceryItems.name 
+ 
+  // hook with initial empty array state groceryItems 
   // we'll use this to populate the list of grocery items 
-  // grocery items = array ?
-  // setGroceryItems = function ?
-  const [groceryItems, setGroceryItems] = useState({
-    name: []
-  });
+  const [groceryItems, setGroceryItems] = useState([]);
+
+  // groceryItems.map((item, idx))// [1,2,3]
 
   // callback function to pass user typed data "onChange" from form into groceryItems
   const updateGroceryItem = (event) => {
+    // when a user types something into the form, the setGroceryItems hook 
+    // updates the groceryItems array
     setGroceryItems(event.target.value);
   };
 
@@ -29,8 +29,8 @@ const App = () => {
         </header>
         <main>
           {/* these are the two children components */}
-          <GroceryItemForm setGroceryItems={groceryItems} updateGroceryItem={updateGroceryItem}/>
-          <GroceryItemList setGroceryItems={groceryItems}/>
+          <GroceryItemForm groceryItems={groceryItems} setGroceryItems={setGroceryItems} updateGroceryItem={updateGroceryItem}/>
+          <GroceryItemList groceryItems={groceryItems}/>
         </main>
       </div>
   );
