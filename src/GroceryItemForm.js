@@ -2,42 +2,27 @@ import React from "react";
 import './App.css';
 
 
-const GroceryItemForm = ({groceryItems, setGroceryItems, updateGroceryItem}) => {
+const GroceryItemForm = ({groceryItems, setGroceryItems, handleChange}) => {
   
   // user clicks Add button
   // callback function (event handler??) to user submitted data "onSubmit" from form <GroceryItemForm /> into groceryItems.name array
-  const handleGroceryItem = (event) => {
+  const handleSubmit = (event) => {
     // prevents page refresh
     event.preventDefault();
-    
     // form field starts with empty string until user types something
 
-    console.log({groceryItems});
+    console.log(`This is groceryItems before setGroceryItems` , {groceryItems});
 
     setGroceryItems(groceryItem => (
-      // groceryItems.push(['Onions']),
-      // groceryItems.push(['Eggs']),
-      // groceryItems.push(['Pickles']),
-
       // spreads any existing items in our array
       { 
-        ...groceryItem,
+        ...groceryItem
       }
     ));
 
-    console.log({groceryItems});
+    console.log(`This is groceryItems after setGroceryItems `, {groceryItems});
 
-    // groceryItems.map((item, idx))// [1,2,3]
-
-
-    // setGroceryItems(groceryItem => (
-    // {
-    // ...groceryItem,
-    // // and also adds the new groceryItem submitted by the user
-    // name: [...groceryItem.name, groceryItems]
-    // }
-    // ));
-
+  
     // we return the form to an empty state afterwards 
     setGroceryItems("");
   };
@@ -45,7 +30,7 @@ const GroceryItemForm = ({groceryItems, setGroceryItems, updateGroceryItem}) => 
   console.log({groceryItems});
 
   return (      
-    <form className="form" onSubmit={handleGroceryItem} >
+    <form className="form" onSubmit={handleSubmit} >
       <div className="form-control">
         <label htmlFor="foodItem"></label>
         <input
@@ -54,7 +39,7 @@ const GroceryItemForm = ({groceryItems, setGroceryItems, updateGroceryItem}) => 
           name="grocery item"
           placeholder="cheese"
           value={groceryItems}
-          onChange={updateGroceryItem}
+          onChange={handleChange}
         />
         <button type="submit">Add</button>
       </div>

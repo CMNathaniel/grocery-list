@@ -4,6 +4,7 @@ import groceryimage from './Groceries.jpeg';
 import GroceryItemForm from './GroceryItemForm.js';
 import GroceryItemList from './GroceryItemList.js';
 
+
 const App = () => {
  
   // hook with initial empty array state groceryItems 
@@ -13,9 +14,9 @@ const App = () => {
   // groceryItems.map((item, idx))// [1,2,3]
 
   // callback function to pass user typed data "onChange" from form into groceryItems
-  const updateGroceryItem = (event) => {
+  const handleChange = (event) => {
     // when a user types something into the form, the setGroceryItems hook 
-    // updates the groceryItems array
+    // updates the groceryItems array with their input
     setGroceryItems(event.target.value);
   };
 
@@ -29,7 +30,7 @@ const App = () => {
         </header>
         <main>
           {/* these are the two children components */}
-          <GroceryItemForm groceryItems={groceryItems} setGroceryItems={setGroceryItems} updateGroceryItem={updateGroceryItem}/>
+          <GroceryItemForm groceryItems={groceryItems} setGroceryItems={setGroceryItems} handleChange={handleChange}/>
           <GroceryItemList groceryItems={groceryItems}/>
         </main>
       </div>
