@@ -11,8 +11,6 @@ const App = () => {
   // we'll use this to populate the list of grocery items 
   const [groceryItems, setGroceryItems] = useState([]);
 
-  // groceryItems.map((item, idx))// [1,2,3]
-
   // callback function to pass user typed data "onChange" from form into groceryItems
   const handleChange = (event) => {
     // when a user types something into the form, the setGroceryItems hook 
@@ -29,8 +27,10 @@ const App = () => {
           <img src={groceryimage} className="app-logo" alt="logo" />
         </header>
         <main>
-          {/* these are the two children components */}
+  {/* these are the two children components */}
+  {/* we pass props __, __ and __ to the component GroceryItemForm */}     
           <GroceryItemForm groceryItems={groceryItems} setGroceryItems={setGroceryItems} handleChange={handleChange}/>
+  {/* we pass props __ to the component GroceryItemList */}
           <GroceryItemList groceryItems={groceryItems}/>
         </main>
       </div>

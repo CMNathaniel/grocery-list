@@ -14,7 +14,7 @@ const GroceryItemForm = ({groceryItems, setGroceryItems, handleChange}) => {
     console.log(`This is groceryItems before setGroceryItems` , {groceryItems});
 
     setGroceryItems(groceryItem => (
-      // spreads any existing items in our array
+      // ...groceryItem spreads any existing items in our array while preserving original data
       { 
         ...groceryItem
       }
