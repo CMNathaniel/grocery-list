@@ -15,14 +15,13 @@ const App = () => {
   const handleChange = (event) => {
     // when a user types something into the form, the setGroceryItems hook 
     // updates the groceryItems array with their input
-    // const { name, value } = event.target;
-    // setGroceryItems((prevState) => ({ ...prevState, [name]: value }));
-
-
-
+    console.log(event.target.value);
     setGroceryItems(event.target.value);
+  };
 
-
+  const addNewGroceryItem = (log) => {
+    let logs = [...groceryItems, log];
+    setGroceryItems(logs);
   };
 
   return (
@@ -36,9 +35,14 @@ const App = () => {
         <main>
   {/* these are the two children components */}
   {/* we pass props __, __ and __ to the component GroceryItemForm */}     
-          <GroceryItemForm groceryItems={groceryItems} setGroceryItems={setGroceryItems} handleChange={handleChange}/>
+          {/* <GroceryItemForm groceryItems={groceryItems} setGroceryItems={setGroceryItems} handleChange={handleChange}/> */}
+          <GroceryItemForm groceryItems={groceryItems} setGroceryItems={setGroceryItems} handleChange={handleChange} addNewGroceryItem={addNewGroceryItem}/>
+
   {/* we pass props __ to the component GroceryItemList */}
+
+          {/* <GroceryItemList groceryItems={groceryItems}/> */}
           <GroceryItemList groceryItems={groceryItems}/>
+
         </main>
       </div>
   );
