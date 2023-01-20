@@ -13,18 +13,27 @@ const GroceryItemForm = ({groceryItems, setGroceryItems, handleChange}) => {
 
     console.log(`This is groceryItems before setGroceryItems` , {groceryItems});
 
-    setGroceryItems(groceryItem => (
-      // ...groceryItem spreads any existing items in our array while preserving original data
-      { 
-        ...groceryItem
-      }
+    // setGroceryItems(groceryItem => (
+    //   // ...groceryItem spreads any existing items in our array while preserving original data
+    //   { 
+    //     ...groceryItem
+    //   }
+    // ));
+
+    setGroceryItems((groceryItems) => (
+      [
+      ...groceryItems
+      ]
     ));
+
+    // setGroceryItems((prevContact) => [...prevContact, groceryItems]);
+
 
     console.log(`This is groceryItems after setGroceryItems `, {groceryItems});
 
   
     // we return the form to an empty state afterwards 
-    setGroceryItems("");
+    // setGroceryItems("");
   };
 
   console.log({groceryItems});

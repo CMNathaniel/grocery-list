@@ -15,7 +15,14 @@ const App = () => {
   const handleChange = (event) => {
     // when a user types something into the form, the setGroceryItems hook 
     // updates the groceryItems array with their input
+    // const { name, value } = event.target;
+    // setGroceryItems((prevState) => ({ ...prevState, [name]: value }));
+
+
+
     setGroceryItems(event.target.value);
+
+
   };
 
   return (
