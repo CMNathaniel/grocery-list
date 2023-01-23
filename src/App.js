@@ -12,16 +12,27 @@ const App = () => {
   const [groceryItems, setGroceryItems] = useState([]);
 
   // callback function to pass user typed data "onChange" from form into groceryItems
-  const handleChange = (event) => {
-    // when a user types something into the form, the setGroceryItems hook 
-    // updates the groceryItems array with their input
-    console.log(event.target.value);
-    setGroceryItems(event.target.value);
-  };
+  // const handleChange = (event) => {
+  //   // when a user types something into the form, the setGroceryItems hook 
+  //   // updates the groceryItems array with their input
 
-  const addNewGroceryItem = (log) => {
-    let logs = [...groceryItems, log];
-    setGroceryItems(logs);
+  //   //should I be using the setGroceryItems hook in this handleChange event handler?
+  //   setGroceryItems(event.target.value);
+  //   console.log(`HandleChange: This is the value of groceryItems`, groceryItems);
+  // };
+
+  const addNewGroceryItem = ([groceryItems]) => {
+
+    //these line(s) of code are causing the commas to be added between letters in a word after clicking the Add button
+    // let logs = [...groceryItems, log];
+    // setGroceryItems(logs);
+
+    // setGroceryItems([...groceryItems, groceryItems]);
+    setGroceryItems([...groceryItems]);
+
+    // console.log(`Hello from inside the addNewGroceryItem function!`);
+
+
   };
 
   return (
@@ -36,7 +47,7 @@ const App = () => {
   {/* these are the two children components */}
   {/* we pass props __, __ and __ to the component GroceryItemForm */}     
           {/* <GroceryItemForm groceryItems={groceryItems} setGroceryItems={setGroceryItems} handleChange={handleChange}/> */}
-          <GroceryItemForm groceryItems={groceryItems} setGroceryItems={setGroceryItems} handleChange={handleChange} addNewGroceryItem={addNewGroceryItem}/>
+          <GroceryItemForm groceryItems={groceryItems} setGroceryItems={setGroceryItems} addNewGroceryItem={addNewGroceryItem}/>
 
   {/* we pass props __ to the component GroceryItemList */}
 
