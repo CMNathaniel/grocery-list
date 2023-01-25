@@ -2,7 +2,7 @@ import React from "react";
 import './App.css';
 
 
-const GroceryItemForm = ({groceryItems, handleChange, setGroceryItems, addNewGroceryItem}) => {
+const GroceryItemForm = ({groceryItems, setGroceryItems}) => {
   
   // user clicks Add button
   // callback function (event handler) to user submitted data "onSubmit" from form <GroceryItemForm /> into groceryItems array
@@ -10,14 +10,23 @@ const GroceryItemForm = ({groceryItems, handleChange, setGroceryItems, addNewGro
     // prevents page refresh
     event.preventDefault();
 
-    console.log(`this is groceryItems before addNewGroceryItem ` + groceryItems);
+    console.log(`handleSubmit: this is groceryItems before addNewGroceryItem ` + groceryItems);
+    console.log(`handleSubmit: groceryItems data type before addNewGroceryItem = `, typeof(groceryItems));
 
-    addNewGroceryItem();
+    // addNewGroceryItem();
 
-    console.log(`this is groceryItems after addNewGroceryItem ` + groceryItems);
-  
+      setGroceryItems(groceryItem => (
+        {
+        ...groceryItem,
+        // name: [...groceryItem.name, groceryItems]
+        }
+      ));
+
+    console.log(`handleSubmit: this is groceryItems after addNewGroceryItem ` + groceryItems);
+    console.log(`handleSubmit: groceryItems data type after addNewGroceryItem = `, typeof(groceryItems));
+
     // we return the form to an empty state afterwards 
-    // setGroceryItems("");
+    setGroceryItems("");
   };
 
 
@@ -29,10 +38,11 @@ const GroceryItemForm = ({groceryItems, handleChange, setGroceryItems, addNewGro
           type="text"
           id="name"
           name="grocery item"
-          placeholder="cheese"
+          placeholder="pickles"
+          // is this correct? 
           value={groceryItems}
           // onChange={handleChange}
-          onChange={e => setGroceryItems(e.target.value)}
+          onChange={event => setGroceryItems(event.target.value)}
 
         />
         <button type="submit">Add</button>

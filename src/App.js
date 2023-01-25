@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import './App.css';
 import groceryimage from './Groceries.jpeg';
 import GroceryItemForm from './GroceryItemForm.js';
-import GroceryItemList from './GroceryItemList.js';
+// import GroceryItemList from './GroceryItemList.js';
 
 
 const App = () => {
  
   // hook with initial empty array state groceryItems 
   // we'll use this to populate the list of grocery items 
-  const [groceryItems, setGroceryItems] = useState([]);
+  // groceryItems = __data type___ array ??
+  // setGroceryItems data type is function
+
+  const [groceryItems, setGroceryItems] = useState(["eggs", "bread", "cheese"]);
 
   // callback function to pass user typed data "onChange" from form into groceryItems
   // const handleChange = (event) => {
@@ -21,19 +24,12 @@ const App = () => {
   //   console.log(`HandleChange: This is the value of groceryItems`, groceryItems);
   // };
 
-  const addNewGroceryItem = ([groceryItems]) => {
-
-    //these line(s) of code are causing the commas to be added between letters in a word after clicking the Add button
-    // let logs = [...groceryItems, log];
-    // setGroceryItems(logs);
-
-    // setGroceryItems([...groceryItems, groceryItems]);
-    setGroceryItems([...groceryItems]);
-
-    // console.log(`Hello from inside the addNewGroceryItem function!`);
-
-
-  };
+  // const addNewGroceryItem = (groceryItems) => {
+  //   // setGroceryItems([...groceryItems, groceryItems]);
+  //   // setGroceryItems(...groceryItems);
+  //   console.log(`addNewGroceryItem: groceryItems data type = `, typeof(groceryItems));
+  //   console.log(`addNewGroceryItem: setGroceryItems data type = `, typeof(setGroceryItems));
+  // };
 
   return (
       <div className="app">
@@ -47,12 +43,12 @@ const App = () => {
   {/* these are the two children components */}
   {/* we pass props __, __ and __ to the component GroceryItemForm */}     
           {/* <GroceryItemForm groceryItems={groceryItems} setGroceryItems={setGroceryItems} handleChange={handleChange}/> */}
-          <GroceryItemForm groceryItems={groceryItems} setGroceryItems={setGroceryItems} addNewGroceryItem={addNewGroceryItem}/>
+          <GroceryItemForm groceryItems={groceryItems} setGroceryItems={setGroceryItems}/>
 
   {/* we pass props __ to the component GroceryItemList */}
 
           {/* <GroceryItemList groceryItems={groceryItems}/> */}
-          <GroceryItemList groceryItems={groceryItems}/>
+          {/* <GroceryItemList groceryItems={groceryItems}/> */}
 
         </main>
       </div>
